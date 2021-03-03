@@ -1,0 +1,61 @@
+﻿@model Assessment.Domains.PaketSoals.Soal
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="container">
+    <main role="main" class="pb-3">
+
+        <h2>Manage Soal</h2>
+
+        <div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a class="nav-link " asp-action="create">Create New</a></li>
+                        <li class="nav-item"><a class="nav-link " asp-action="Index">List</a></li>
+                        <li class="nav-item"><a class="nav-link " asp-action="Edit" asp-route-id="@Model.Id" >Edit @Model.Name </a></li>
+                        <li class="nav-item"><a class="nav-link active"  href="#">Detail of @Model.Name </a></li>
+                    </ul>
+
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="row">
+                                <dt class = "col-sm-12">
+                                    @Html.DisplayNameFor(model => model.PaketSoal)
+                                </dt>
+                                <dd class = "col-sm-12">
+                                    @Html.DisplayFor(model => model.PaketSoal.Id)
+                                </dd>
+                                <dt class = "col-sm-12">
+                                    @Html.DisplayNameFor(model => model.Pertanyaan)
+                                </dt>
+                                <dd class = "col-sm-12">
+                                    @Html.DisplayFor(model => model.Pertanyaan)
+                                </dd>
+                                <dt class = "col-sm-12">
+                                    @Html.DisplayNameFor(model => model.Tipe)
+                                </dt>
+                                <dd class = "col-sm-12">
+                                    @Html.DisplayFor(model => model.Tipe)
+                                </dd>
+                                <dt class = "col-sm-12">
+                                    @Html.DisplayNameFor(model => model.No)
+                                </dt>
+                                <dd class = "col-sm-12">
+                                    @Html.DisplayFor(model => model.No)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </main>
+</div>

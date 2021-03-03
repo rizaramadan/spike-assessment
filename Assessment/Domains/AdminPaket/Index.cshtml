@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Assessment.Domains.PaketSoals.PaketSoal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div>
+            <div class="row">
+                <div class="col-md-3 m-2">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a class="nav-link" asp-action="Create">Buat asesmen baru</a></li>
+                    </ul>
+                </div>
+                <br />
+                <div class="col-md-9">
+                    <ul class="nav nav-tabs m-2">
+                        <li class="nav-item">
+                            <a class="nav-link active">Daftar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="ongoing">Berlangsung</a>
+                        </li>
+                    </ul>
+                    @foreach (var item in Model) 
+                    {
+                        
+                        <div class="card m-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><a asp-action="Edit" asp-route-id="@item.Id">@item.MataPelajaran</a></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@item.Domain / @item.Kelas / @item.TingkatKesulitan</h6>
+                                <p class="card-text">@item.Keterangan</p>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

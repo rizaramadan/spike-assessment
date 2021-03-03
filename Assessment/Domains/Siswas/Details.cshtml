@@ -1,0 +1,55 @@
+﻿@model Assessment.Domains.Rombel.Siswa
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="container">
+    <main role="main" class="pb-3">
+
+        <h2>Manage Siswa</h2>
+
+        <div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a class="nav-link " asp-action="create">Create New</a></li>
+                        <li class="nav-item"><a class="nav-link " asp-action="Index">List</a></li>
+                        <li class="nav-item"><a class="nav-link " asp-action="Edit" asp-route-id="@Model.Id" >Edit @Model.Name </a></li>
+                        <li class="nav-item"><a class="nav-link active"  href="#">Detail of @Model.Name </a></li>
+                    </ul>
+
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="row">
+                                <dt class = "col-sm-12">
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </dt>
+                                <dd class = "col-sm-12">
+                                    @Html.DisplayFor(model => model.Name)
+                                </dd>
+                                <dt class = "col-sm-12">
+                                    @Html.DisplayNameFor(model => model.Handphone)
+                                </dt>
+                                <dd class = "col-sm-12">
+                                    @Html.DisplayFor(model => model.Handphone)
+                                </dd>
+                                <dt class = "col-sm-12">
+                                    @Html.DisplayNameFor(model => model.RombonganBelajar)
+                                </dt>
+                                <dd class = "col-sm-12">
+                                    @Html.DisplayFor(model => model.RombonganBelajar.Id)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </main>
+</div>

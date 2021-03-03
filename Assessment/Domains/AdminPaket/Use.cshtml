@@ -1,0 +1,55 @@
+﻿@model Assessment.Domains.Intakes.Intake
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Use">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input asp-for="Tipe" type="hidden" value="1" />
+                                <input type="hidden" asp-for="PaketSoalId" value="@ViewData["PaketSoalId"]" />
+                                <div class="form-group">
+                                    <label asp-for="RombonganId" class="control-label"></label>
+                                    <select asp-for="RombonganId" class="form-control" asp-items="ViewBag.RombonganId"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Start" class="control-label"></label>
+                                    <input asp-for="Start" class="form-control" />
+                                    <span asp-validation-for="Start" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="End" class="control-label"></label>
+                                    <input asp-for="End" class="form-control" />
+                                    <span asp-validation-for="End" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

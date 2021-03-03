@@ -1,0 +1,101 @@
+﻿@using Assessment.Domains.PaketSoals
+@model Assessment.Domains.Intakes.SubmitJawaban
+
+@{
+    ViewData["Title"] = "Login Intake";
+    var cred = (Assessment.Domains.Intakes.IntakeCredential) ViewData["IntakeCredential"];
+    var soal = Model.Soal;
+
+    var prev = (long?)ViewData["Prev"];
+    var next = (long?)ViewData["Next"];
+}
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Submit">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input asp-for="Id" value="@Model.Id" type="hidden" />
+                                <input asp-for="SiswaId" type="hidden" />
+                                <input asp-for="IntakeId" type="hidden" />
+                                @if (soal.Tipe == TipeSoal.PG && soal is SoalPg pg)
+                                {
+                                    <div class="card m-1">
+                                        <h6 class="card-header">No @pg.No</h6>
+                                        <p class="card-text m-2"><small class="text-muted">Pilihan Ganda</small></p>
+                                        <div class="card-body">
+                                            @pg.Pertanyaan
+                                            <div class="form-group m-2">
+                                                @if (Model.Jawaban == "1")
+                                                {
+                                                    <input type="radio" id="1" name="Jawaban" value="1" checked="checked">
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" id="1" name="Jawaban" value="1">
+                                                }
+                                                <label for="male">@pg.Jawaban[0]</label><br>
+                                                @if (Model.Jawaban == "2")
+                                                {
+                                                    <input type="radio" id="2" name="Jawaban" value="2" checked="checked">
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" id="2" name="Jawaban" value="2">
+                                                }
+                                                <label for="female">@pg.Jawaban[1]</label><br>
+                                                @if (Model.Jawaban == "3")
+                                                {
+                                                    <input type="radio" id="3" name="Jawaban" value="3" checked="checked">
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" id="3" name="Jawaban" value="3">
+                                                }
+                                                <label for="other">@pg.Jawaban[2]</label>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                }
+                                else if (soal.Tipe == TipeSoal.Essay)
+                                {
+                                    <div class="card m-1">
+                                        <h6 class="card-header">No @soal.No</h6>
+                                        <p class="card-text m-2"><small class="text-muted">Essay</small></p>
+                                        <div class="card-body">
+                                            <p class="card-text">@soal.Pertanyaan</p>
+                                            <input asp-for="Jawaban" />
+                                        </div>
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    @if (prev.HasValue)
+                                    {
+                                        <a role="button" class="btn btn-warning" asp-route-siswaId="@Model.SiswaId" asp-route-jawabanIntakeId="@prev">Previous</a>
+                                    }
+                                    <input type="submit" value="Save Answer" class="btn btn-primary" />
+                                    @if (next.HasValue)
+                                    {
+                                        <a role="button" class="btn btn-warning" asp-route-siswaId="@Model.SiswaId" asp-route-jawabanIntakeId="@next">Next</a>
+                                    }
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

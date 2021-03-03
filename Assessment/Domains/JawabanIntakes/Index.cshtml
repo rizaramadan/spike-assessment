@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Assessment.Domains.Intakes.JawabanIntake>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <h2>Manage JawabanIntake</h2>
+        <div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a class="nav-link" asp-action="Create">Create New</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">List</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Intake)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SoalId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Siswa)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Created)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Jawaban)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Skor)
+                                </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    @foreach (var item in Model) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Intake.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoalId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Siswa.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Created)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Jawaban)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Skor)
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a role="button" class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                                        <a role="button" class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                        <a role="button" class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                    }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

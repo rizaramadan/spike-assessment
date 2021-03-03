@@ -1,0 +1,21 @@
+﻿@model Assessment.Domains.Intakes.Intake
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="row">
+            <div class="col-md-9">
+                <p>Pastikan kamu sudah memiliki WhatsApp setiap Murid</p>
+                @foreach (var item in Model.Rombongan.Siswa)
+                {
+                    <div class="card m-3">
+                        <div class="card-body">
+                            <a href="whatsapp://send?text=assesment.dikbud.id/Intakes/SiswaIntake/@Model.Id?siswaId=@item.Id" data-action="share/whatsapp/share">Share</a>
+                            to @item.Name
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </main>
+</div>
+

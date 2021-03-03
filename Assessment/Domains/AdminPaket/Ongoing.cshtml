@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Assessment.Domains.Intakes.Intake>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div>
+            <div class="row">
+                <div class="col-md-3 m-2">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a class="nav-link" asp-action="Create">Buat asesmen baru</a></li>
+                    </ul>
+                </div>
+                <br />
+                <div class="col-md-9">
+                    <ul class="nav nav-tabs m-2">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="index">Daftar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active">Berlangsung</a>
+                        </li>
+                    </ul>
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="card m-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><a asp-action="ShareAssessment" asp-route-id="@item.Id">@item.PaketSoal.MataPelajaran</a></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@item.PaketSoal.Domain / @item.PaketSoal.Kelas / @item.PaketSoal.TingkatKesulitan</h6>
+                                <p class="card-text">@item.PaketSoal.Keterangan</p>
+                                <p class="card-text">@item.Rombongan.Name</p>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

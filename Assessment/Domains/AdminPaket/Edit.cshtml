@@ -1,0 +1,105 @@
+﻿@using Assessment.Domains.PaketSoals 
+@model PaketSoal
+
+@{
+    ViewData["Title"] = "Edit";
+    var soals = (List<Soal>)ViewData["Soal"];
+}
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Edit">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id" />
+                                <div class="form-group">
+                                    <label asp-for="Tipe" class="control-label"></label>
+                                    <input asp-for="Tipe" class="form-control" />
+                                    <span asp-validation-for="Tipe" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="MataPelajaran" class="control-label"></label>
+                                    <input asp-for="MataPelajaran" class="form-control" />
+                                    <span asp-validation-for="MataPelajaran" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Domain" class="control-label"></label>
+                                    <input asp-for="Domain" class="form-control" />
+                                    <span asp-validation-for="Domain" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Kelas" class="control-label"></label>
+                                    <input asp-for="Kelas" class="form-control" />
+                                    <span asp-validation-for="Kelas" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="TingkatKesulitan" class="control-label"></label>
+                                    <input asp-for="TingkatKesulitan" class="form-control" />
+                                    <span asp-validation-for="TingkatKesulitan" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Keterangan" class="control-label"></label>
+                                    <input asp-for="Keterangan" class="form-control" />
+                                    <span asp-validation-for="Keterangan" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Save" class="btn btn-sm btn-primary" />
+                                    <a role="button" class="btn btn-sm btn-success" asp-action="AddSoalEssay" asp-route-id="@Model.Id">+ Soal Essay</a>
+                                    <a role="button" class="btn btn-sm btn-warning" asp-action="AddSoalPg" asp-route-id="@Model.Id">+ Soal PG</a>
+                                    @if (soals is not null) 
+                                    {
+                                        <a role="button" class="btn btn-sm btn-primary" asp-action="Use" asp-route-id="@Model.Id">Use</a>
+                                    }
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @foreach (var soal in soals)
+                    {
+
+                        if (soal.Tipe == TipeSoal.PG && soal is SoalPg pg)
+                        {
+                            <div class="card m-1">
+                                <h6 class="card-header">No @pg.No</h6>
+                                <p class="card-text m-2"><small class="text-muted">Pilihan Ganda</small></p>
+                                <div class="card-body">
+                                    @pg.Pertanyaan
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">@pg.Jawaban[0]</li>
+                                    <li class="list-group-item">@pg.Jawaban[1]</li>
+                                    <li class="list-group-item">@pg.Jawaban[2]</li>
+                                </ul>
+                                
+                            </div>
+                        }
+                        else if (soal.Tipe == TipeSoal.Essay)
+                        {
+                            <div class="card m-1">
+                                <h6 class="card-header">No @soal.No</h6>
+                                <p class="card-text m-2"><small class="text-muted">Essay</small></p>
+                                <div class="card-body">
+                                    @soal.Pertanyaan
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

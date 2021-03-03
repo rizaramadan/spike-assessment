@@ -1,0 +1,79 @@
+﻿@model Assessment.Domains.PaketSoals.SoalPg
+
+@{
+    ViewData["Title"] = "Create";
+    //Model.Jawaban = Model.Jawaban ?? new List<string>() { String.Empty, String.Empty, string.Empty };
+}
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="CreateSoalPg">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="PaketSoalId" value="@ViewData["PaketSoalId"]" />
+                                <input type="hidden" asp-for="Tipe" value="@ViewData["Tipe"]" />
+                                <div class="form-group">
+                                    <label asp-for="No" class="control-label"></label>
+                                    <input asp-for="No" class="form-control" />
+                                    <span asp-validation-for="No" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Pertanyaan" class="control-label"></label>
+                                    <input asp-for="Pertanyaan" class="form-control" />
+                                    <span asp-validation-for="Pertanyaan" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Jawaban[0]" class="control-label"></label>
+                                    <input asp-for="Jawaban[0]" class="form-control" />
+                                    <span asp-validation-for="Jawaban[0]" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Jawaban[1]" class="control-label"></label>
+                                    <input asp-for="Jawaban[1]" class="form-control" />
+                                    <span asp-validation-for="Jawaban[1]" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Jawaban[2]" class="control-label"></label>
+                                    <input asp-for="Jawaban[2]" class="form-control" />
+                                    <span asp-validation-for="Jawaban[2]" class="text-danger"></span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label asp-for="JawabanBenar" class="control-label"></label>
+                                    <input asp-for="JawabanBenar" class="form-control" />
+                                    <span asp-validation-for="JawabanBenar" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Create Soal" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

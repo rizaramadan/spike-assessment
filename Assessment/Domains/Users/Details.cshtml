@@ -1,0 +1,61 @@
+﻿@model Assessment.Models.AppUser
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <main role="main" class="pb-3">
+
+        <h2>Detail of @Model.UserName</h2>
+
+        <div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a class="nav-link " asp-action="Create">Create New</a></li>
+                        <li class="nav-item"><a class="nav-link " asp-action="Index">List</a></li>
+                        <li class="nav-item"><a class="nav-link " asp-action="Edit" asp-route-id="@Model.Id">Edit</a></li>
+                        <li class="nav-item"><a class="nav-link active">Details</a></li>
+                        <li class="nav-item"><a class="nav-link " asp-action="Delete" asp-route-id="@Model.Id">Delete</a></li>
+                    </ul>
+
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="row border">
+                                <dt class="col-sm-12 ">
+                                    @Html.DisplayNameFor(model => model.NRG)
+                                </dt>
+                                <dd class="col-sm-12">
+                                    @Html.DisplayFor(model => model.NRG)
+                                </dd>
+                                <dt class="col-sm-12">
+                                    @Html.DisplayNameFor(model => model.UserName)
+                                </dt>
+                                <dd class="col-sm-12">
+                                    @Html.DisplayFor(model => model.UserName)
+                                </dd>
+                                <dt class="col-sm-12">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+                                <dd class="col-sm-12">
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+                                <dt class="col-sm-12">
+                                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                                </dt>
+                                <dd class="col-sm-12">
+                                    @Html.DisplayFor(model => model.PhoneNumber)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
